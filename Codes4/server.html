@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img{
+			width:200px;
+			height:200px;
+		}
+		.showme{
+			display: block;
+		}
+		.hideme{
+			display: none;
+		}
+	</style>
+	
+	<script>
+		window.addEventListener("load",()=>{
+			document.getElementById("show").className="hideme";
+		});
+	function doAjax(){
+		document.getElementById("show").className="showme";
+		var searchVal = document.querySelector("#search").value;
+		var url  = "http://api.giphy.com/v1/gifs/search?q="+searchVal+"&api_key=54e8326336cc4baf979c65c7b2b4c751&limit=5";
+		var ser = new XMLHttpRequest();
+	ser.open("GET",url);
+	ser.onreadystatechange=function(){
+		console.log("State ",ser.readyState);
+		if(ser.readyState == 4 && ser.status ==200){
+			//ser.responseText.data.images.original
+			var t = JSON.parse(ser.responseText);
+			var div = document.getElementById("result");
+			div.innerHTML = "";
+			console.log(t.data);
+			document.getElementById("show").className="hideme";
+			for(var i = 0 ; i<t.data.length; i++){
+				var imgURL = t.data[i].images.original.url;
+				console.log(imgURL);
+				var img = document.createElement("img");
+				img.src = imgURL;
+				div.appendChild(img);
+			}
+			//document.getElementById("result").innerHTML= ser.responseText;
+			
+		}
+	}
+	ser.send(null);
+	}
+	</script>
+</head>
+<body>
+	<input type="text" placeholder="Type to Search" id="search">
+	<button onclick="doAjax()">Search</button>
+	<div id="show">
+		<img src="images/Pacman.gif">
+	</div>
+	<fieldset>
+		<legend>Search Result</legend>
+		<div id="result"></div>
+	</fieldset>
+</body>
+</html>

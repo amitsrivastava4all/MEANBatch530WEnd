@@ -1,0 +1,12 @@
+.mystyle{
+	cursor: pointer;
+}
+.link{
+	cursor: pointer;
+	color:blue;
+}
+.redrow{
+background-color: red;
+color: yellow;
+font-style: italic;
+}

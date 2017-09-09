@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/custom.css">
+	<script src="js/post.js"></script>
+	<script src="js/crud.js"></script>
+	<script src="js/message.js"></script>
+</head>
+<body>
+	<div class="container">
+	<h1 data-abcd="Hello">FB Post App</h1>
+	<input type="url" placeholder="Type Image URL to Display" size="80" id="img">
+	<textarea  id="post" placeholder="What's On Your Mind?" cols="100" rows="6"></textarea>
+	<br>
+	<button class="btn btn-primary" id="postBt">Post</button>
+	<button class="btn btn-danger" id="postDel">Delete Mark</button>
+	<button class="btn btn-info" id="postEdit">Update</button>
+	<button class="btn btn-success" id="postSave">Save</button>
+	<button class="btn btn-info" id="postLoad">Load</button>
+	<button class="btn btn-success" id="ajax">Load Data from Server</button>
+	<h1>Total  :: <span id="total"></span> &nbsp;  MARK :: <span id="marktotal"></span></h1>
+	</div>	
+	<table class="table">
+		<thead>
+			<th>Post</th>
+			<th>Post By</th>
+			<th>Post Date</th>
+			
+		</thead>
+		<tbody id="posts">
+			
+		</tbody>
+				</table>
+</body>
+</html>
