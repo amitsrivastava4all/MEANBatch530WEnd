@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	AngularJS Demo</title>
+	<style>
+		.red{
+			color: red;
+			font-style: italic;
+		}
+		.green{
+			color:green;
+			font-weight: bold;
+		}
+	</style>	
+	<script src="libs/angular.min.js"></script>
+</head>
+<body ng-app>
+Sort 
+<select ng-model="sort">
+	<option>id</option>
+	<option>name</option>
+	<option>price</option>
+</select>
+<input type="checkbox" ng-model="ascdesc">
+<input type="text" ng-model="search.name" placeholder="Type to Search">
+<ul ng-init="products=[{id:100,name:'Apple X',price:90000,img:'https://www.technobuffalo.com/wp-content/uploads/2017/09/iPhone-X-Product-200x200.jpg'},{id:101,name:'Samsung S8',price:48000,img:'https://www.mobileciti.com.au/media/catalog/product/cache/1/thumbnail/200x/602f0fa2c1f0d1ba5e241f914e856ff9/s/a/samsung-galaxy-s8-black-front-side.jpg'},{id:102,name:'LG QT',price:38000,img:'https://gadgets7.news/media/2017/08/LG-Q6-Astro-Black-Back-View-Image-200-12-Gadgets7.news_.jpg'}]">
+	<li ng-repeat="product in products|filter:search|orderBy:sort:ascdesc">
+		{{product.id}}
+		{{product.name|uppercase}}
+		{{product.price|currency:"&#8377;"}}
+		<img ng-src='{{product.img}}' alt="Not Supported ">
+	</li>
+</ul>	
+<hr>
+<input type="checkbox" ng-init="tick=false" ng-model="tick"> 
+{{tick}}
+<br>
+Tick to Show Calculations
+<div ng-show=tick>
+<input type="text" ng-init="pr=0" placeholder="Type Price here" ng-model="pr">
+Price is {{pr}}
+<br>
+<input type="text" ng-init="qt=0" placeholder="Type Qt Here" ng-model="qt">
+Qt is {{qt}}
+<br>
+<p ng-class="{red:pr<4000,green:pr>=4000}">Amount is {{pr*qt}}</p>
+</div>	
+</body>
+</html>
