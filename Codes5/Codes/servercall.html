@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Server Call</title>
+	<script src="libs/angular.min.js"></script>
+	<script>
+	const app = angular.module("myapp",[]);
+	app.controller("myctrl",($scope,myfactory)=>{
+		$scope.load=()=>{
+			console.log("U Click on Button Load Fn Call");
+			var promise = myfactory.serverCall();
+			for(let i = 1;i<=10; i++){
+				console.log("I am Doing Something else ",i*2);
+			}
+			promise.then((result)=>{
+				$scope.mydata = result.data.mobiles;
+			},(err)=>{
+				$scope.error = err;
+			})
+			
+		}
+	});
+	app.factory("myfactory",($http,$q)=>{
+		const url = 'https://raw.githubusercontent.com/brainmentorspvtltd/hmr/master/mobile.json';
+		return{
+			serverCall(){
+				console.log("Server Call ....");
+				var fakeObject = $q.defer();
+				$http.get(url).then(success,fail);
+				console.log("Send the Server Call");
+				function success(result){
+					console.log("Success Call...");
+					fakeObject.resolve(result);
+				}
+				function fail (err){
+					console.log("Fail Call");
+					fakeObject.reject(err);
+				}
+				console.log("Going to Return Promise...");
+				return fakeObject.promise;
+				}
+		}
+	})	
+	</script>
+</head>
+<body ng-app="myapp" ng-controller="myctrl">
+	<button ng-click="load()">Load Data</button>
+	<ul>
+		<li ng-repeat ="mobile in mydata">
+			<img ng-src = "{{mobile.image}}">
+			{{mobile.name}} {{mobile.price}}
+		</li>
+	</ul>
+	
+	{{error}}
+</body>
+</html>

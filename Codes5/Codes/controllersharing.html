@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="libs/angular.min.js"></script>
+	<script>
+	const app = angular.module("myapp",[]);
+		app.factory("myfactory",()=>{
+			return{
+				name:'',
+				setFirstName(name){
+					this.name = name;
+				},
+				getName(){
+					return this.name;
+				}
+			};
+		})
+		app.controller("myctrl",($scope,$rootScope,myfactory)=>{
+			//$rootScope.firstName = "Amit";
+			myfactory.setFirstName('Amit');
+			$scope.firstName = myfactory.getName();
+		})
+		app.controller("myctrl2",($scope,myfactory)=>{
+			$scope.firstName = myfactory.getName();
+			$scope.lastName = "Srivastava";
+		})
+		app.controller("myctrl3",($scope)=>{
+			$scope.job = "Trainer";
+		})
+	</script>
+</head>
+<body ng-app="myapp">
+	<div ng-controller="myctrl">
+		First Name {{firstName}}
+<!--		<div ng-controller="myctrl2">-->
+<!--		FullName  {{firstName}} {{lastName}}-->
+<!--	</div>-->
+	</div>
+	
+	<div ng-controller="myctrl2">
+		FullName  {{firstName}} {{lastName}}
+	</div>
+	
+	<div ng-controller="myctrl3">
+		FullName  {{firstName}} {{job}}
+	</div>
+	
+	
+</body>
+</html>
