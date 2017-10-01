@@ -1,0 +1,10 @@
+<div ng-controller="mobilectrl">
+	<h1>Mobiles</h1>
+	<ul>
+		<li ng-repeat="mobile in result.data.mobiles">
+			<img ng-src="{{mobile.url}}">
+			{{mobile.name}}
+			{{mobile.price}}
+		</li>
+	</ul>
+</div>
