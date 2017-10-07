@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul>li{
+		display: inline;
+		padding: 55px;	
+		}
+		a{
+			cursor: pointer;
+			text-decoration: underline;
+			color:blue;
+		}
+		img{
+			width: 100px;
+			height: 100px;
+		}
+		
+	</style>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-route/angular-route.min.js"></script>
+	<script src="app.js"></script>
+	<script src="contactcontroller.js"></script>
+	<script src="urls.js"></script>
+	<script src="mobilecontroller.js"></script>
+	<script src="config.js"></script>
+	<script src="spa.js"></script>
+</head>
+<body ng-app="shopapp">
+	<header>
+	<h1>Welcome to Shop App</h1>
+	<ul>
+		<li><a ng-href="">Shoes</a></li>
+		<li><a ng-href="#/mobiles">Mobiles</a></li>
+		<li><a ng-href="#/contact/Amit/Srivastava">ContactUs</a></li>
+		<li><a ng-href="#/">AboutUs</a></li>
+		<li><a ng-href="#/profile">Profile</a></li>
+	</ul>
+	<hr>
+	</header>
+	<section>
+		<fieldset>
+			<legend>Content</legend>
+			<ng-view></ng-view>
+		</fieldset>
+	</section>
+	<footer>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<hr>
+		Terms and Conditions
+	</footer>
+</body>
+</html>

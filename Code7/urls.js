@@ -1,0 +1,1 @@
+app.value("MOBILE_URL","https://raw.githubusercontent.com/brainmentorspvtltd/myserverdata/master/mobiles.json");
