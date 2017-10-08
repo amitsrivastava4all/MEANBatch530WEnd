@@ -1,0 +1,58 @@
+class SubMenu{
+constructor(name, status, url){
+this.name = name;
+this.status = status;
+this.url = url;
+}
+}
+class Category{
+	constructor(name, status,submenu){
+	 this.name = name;
+     this.status = status;    
+	this.submenu = submenu;
+}
+}
+class Menu{
+	constructor(name,status, cat){
+	this.status = status;
+this.name = name;
+this.category =cat;     
+}
+}
+undefined
+var subMenu = new SubMenu("Running","Y","Running.html");
+undefined
+var subMenuArr = [];
+undefined
+subMenuArr.push(subMenu);
+1
+ subMenu = new SubMenu("Training","Y","Training.html");
+SubMenu {name: "Training", status: "Y", url: "Training.html"}
+subMenuArr.push(subMenu);
+2
+ subMenu = new SubMenu("MotorSports","Y","MotorSports.html");
+SubMenu {name: "MotorSports", status: "Y", url: "MotorSports.html"}
+subMenuArr.push(subMenu);
+3
+var cat = new Category("Sports","Y",subMenuArr);
+undefined
+var cat2 = new Category("Clothing","Y",subMenuArr);
+undefined
+var catArr=[cat,cat2];
+undefined
+var menu = new Menu("Men","Y",catArr);
+undefined
+var menu2 = new Menu("Women","Y",catArr);
+undefined
+var menuArr = [menu,menu2];
+undefined
+var json = JSON.stringify(menuArr);
+undefined
+json;
+"[{"status":"Y","name":"Men","category":[{"name":"Sports","status":"Y","submenu":[{"name":"Running","status":"Y","url":"Running.html"},{"name":"Training","status":"Y","url":"Training.html"},{"name":"MotorSports","status":"Y","url":"MotorSports.html"}]},{"name":"Clothing","status":"Y","submenu":[{"name":"Running","status":"Y","url":"Running.html"},{"name":"Training","status":"Y","url":"Training.html"},{"name":"MotorSports","status":"Y","url":"MotorSports.html"}]}]},{"status":"Y","name":"Women","category":[{"name":"Sports","status":"Y","submenu":[{"name":"Running","status":"Y","url":"Running.html"},{"name":"Training","status":"Y","url":"Training.html"},{"name":"MotorSports","status":"Y","url":"MotorSports.html"}]},{"name":"Clothing","status":"Y","submenu":[{"name":"Running","status":"Y","url":"Running.html"},{"name":"Training","status":"Y","url":"Training.html"},{"name":"MotorSports","status":"Y","url":"MotorSports.html"}]}]}]"
+var menus = {"menus":menuArr};
+undefined
+var json = JSON.stringify(menus);
+undefined
+json;
+"{"menus":[{"status":"Y","name":"Men","category":[{"name":"Sports","status":"Y","submenu":[{"name":"Running","status":"Y","url":"Running.html"},{"name":"Training","status":"Y","url":"Training.html"},{"name":"MotorSports","status":"Y","url":"MotorSports.html"}]},{"name":"Clothing","status":"Y","submenu":[{"name":"Running","status":"Y","url":"Running.html"},{"name":"Training","status":"Y","url":"Training.html"},{"name":"MotorSports","status":"Y","url":"MotorSports.html"}]}]},{"status":"Y","name":"Women","category":[{"name":"Sports","status":"Y","submenu":[{"name":"Running","status":"Y","url":"Running.html"},{"name":"Training","status":"Y","url":"Training.html"},{"name":"MotorSports","status":"Y","url":"MotorSports.html"}]},{"name":"Clothing","status":"Y","submenu":[{"name":"Running","status":"Y","url":"Running.html"},{"name":"Training","status":"Y","url":"Training.html"},{"name":"MotorSports","status":"Y","url":"MotorSports.html"}]}]}]}"
