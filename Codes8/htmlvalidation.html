@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		 
+        input.ng-invalid{
+            border-color: red;
+			border-width: 2px;
+			border-style: solid;
+        }
+        input.ng-valid{
+           border-color: green;
+			border-width: 2px;
+			border-style: solid;
+        }
+   
+		.error{
+			color:red;
+			font-style: italic;
+		}
+	</style>
+	<script src="FormValidationAngular/angular.min.js"></script>
+	<script >
+	const app = angular.module("myapp",[]);
+		app.controller("myctrl",($scope)=>{
+			$scope.checkvalid=(isValid)=>{
+				if(isValid){
+					$scope.result = "Valid Form ";
+				}
+				else{
+					$scope.result = "Invalid Form Please fill the field";
+				}
+			}
+		})
+	</script>
+</head>
+<body ng-app="myapp" ng-controller="myctrl">
+Result is {{result}}
+<form ng-submit="checkvalid(loginform.$valid)" novalidate name="loginform">
+<input ng-model="uname" name="uname" type="text" pattern="[a-zA-Z]{5,10}" required title="Name Must be 5 to 10 characters">
+Touch {{loginform.uname.$touched}}
+<span class="error" ng-show="loginform.uname.$touched && loginform.uname.$pristine && loginform.uname.$error.required">UserName Can't be Blank!</span>
+<span class="error" ng-show="loginform.uname.$touched && loginform.uname.$dirty && loginform.uname.$error.pattern">User Name Must be b/w 5 to 10 Characters</span>
+<input type="email" ng-model="emailid" name="emailid" required placeholder="Type Email Here">
+<button type="submit">Login</button>
+	</form>
+	
+	<hr>
+	<br>
+	UNAme is {{loginform.uname}}
+	<hr>
+	<br>
+	
+	
+</body>
+</html>
