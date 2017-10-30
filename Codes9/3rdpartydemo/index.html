@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+    <script src="ngStorage.min.js"></script>
+    <script>
+        const app = angular.module("myapp",["ngStorage"]);
+        app.controller("myctrl",function($scope,$localStorage){
+                $scope.mystorage = $localStorage;
+        });
+    </script>    
+</head>
+<body ng-app="myapp" ng-controller="myctrl"> 
+    <button ng-click="mystorage.counter=mystorage.counter+1">{{mystorage.counter}}</button>
+</body>
+</html>
